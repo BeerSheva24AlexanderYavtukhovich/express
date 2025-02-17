@@ -1,9 +1,16 @@
 import express from "express";
-import { validator, valid } from "../middleware/validation.js";
-import { schemaPost } from "../validation/schemas.js";
+import {
+  validator,
+  valid,
+  expressValidator,
+} from "../middleware/validation.js";
+import { schemaPost, schemaPut } from "../validation/schemas.js";
 import service from "../service/CoursesService.js";
+import { auth } from "../middleware/auth.js";
+import coursesPathes from "../paths/coursesPathes.js";
 const coursesRoute = express.Router();
-
+coursesRoute.use(auth(coursesPathes));
+coursesRoute.use(expressValidator({ POST: schemaPost, PUT: schemaPut }));
 coursesRoute.post("/", validator(schemaPost), (req, res) => {
   const course = service.addCourse(req.body);
   res.status(201).send(course);

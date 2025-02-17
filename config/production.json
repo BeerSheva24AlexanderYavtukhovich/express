@@ -2,5 +2,9 @@
   "morgan": {
     "type": "tiny",
     "stream": "logs/log.log"
+  },
+  "accounting": {
+    "salt_rounds": 10,
+    "expiredIn":"30d"
   }
 }

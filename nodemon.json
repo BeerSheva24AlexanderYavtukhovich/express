@@ -1,8 +1,5 @@
 {
   "watch": ["src"],
   "ext": "js,json",
-  "exec": "node src/controller/index.js",
-  "env": {
-    "NODE_ENV": "production"
-  }
+  "exec": "node src/controller/index.js"
 }
